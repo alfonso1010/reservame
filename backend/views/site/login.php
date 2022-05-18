@@ -11,25 +11,48 @@ $this->title = 'Login';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="site-login">
-    <h1><?= Html::encode($this->title) ?></h1>
+    <div class="section"></div>
+    <main align="center">
+        
+          <div class="section" ></div>
 
-    <p>Please fill out the following fields to login:</p>
+          <h5 class="indigo-text">Iniciar Sesión</h5>
+          <div class="section"></div>
 
-    <div class="row">
-        <div class="col-lg-5">
-            <?php $form = ActiveForm::begin(['id' => 'login-form']); ?>
+          <div class="container">
+            <div class="z-depth-1 grey lighten-4 row" style="display: inline-block; padding: 32px 48px 0px 48px; border: 1px solid #EEE;">
 
-                <?= $form->field($model, 'username')->textInput(['autofocus' => true]) ?>
+                <?php $form = ActiveForm::begin(['id' => 'login-form','class' => "input-field"]); ?>
 
-                <?= $form->field($model, 'password')->passwordInput() ?>
 
-                <?= $form->field($model, 'rememberMe')->checkbox() ?>
-
-                <div class="form-group">
-                    <?= Html::submitButton('Login', ['class' => 'btn btn-primary', 'name' => 'login-button']) ?>
+                <div class='row'>
+                  <div class='col s12'>
+                  </div>
                 </div>
 
-            <?php ActiveForm::end(); ?>
-        </div>
-    </div>
+                <div class='row'>
+                  <div class='input-field col s12'>
+                    <?= $form->field($model, 'username')->textInput(['autofocus' => true,'class' => 'validate','style' => "text-align:left"])->label('Usuario') ?>
+                  </div>
+                </div>
+
+                <div class='row'>
+                  <div class='input-field col s12'>
+                     <?= $form->field($model, 'password')->passwordInput() ?>
+                  </div>
+                </div>
+
+                <br />
+                <center>
+                    <div class='row'>
+                        <?= Html::submitButton('Iniciar Sesión', ['class' => 'col s12 btn btn-large waves-effect indigo', 'name' => 'login-button']) ?>
+                    </div>
+                </center>
+                <?php ActiveForm::end(); ?>
+            </div>
+          </div>
+
+        <div class="section"></div>
+        <div class="section"></div>
+    </main>
 </div>

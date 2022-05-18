@@ -19,7 +19,8 @@
         "yiisoft/yii2-bootstrap": "~2.0.0",
         "yiisoft/yii2-swiftmailer": "~2.0.0 || ~2.1.0",
         "tecnocen/yii2-roa": "0.4.3",
-        "yii2tech/ar-softdelete": "*"
+        "yii2tech/ar-softdelete": "*",
+        "macgyer/yii2-materializecss": "~3.0.0"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.1.0",

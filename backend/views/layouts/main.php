@@ -9,8 +9,29 @@ use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
 use common\widgets\Alert;
+use yii\helpers\Url;
 
-AppAsset::register($this);
+$this->registerCss(<<<CSS
+    label{
+        font-size: 16px;
+    }
+CSS
+
+);
+
+if (Yii::$app->controller->action->id === 'login') { 
+/**
+ * Do not use this code in your template. Remove it. 
+ * Instead, use the code  $this->layout = '//main-login'; in your controller.
+ */
+    echo $this->render(
+        'main-login',
+        ['content' => $content]
+    );
+}else{
+
+\macgyer\yii2materializecss\assets\MaterializeAsset::register($this);
+
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
@@ -27,36 +48,18 @@ AppAsset::register($this);
 <?php $this->beginBody() ?>
 
 <div class="wrap">
-    <?php
-    NavBar::begin([
-        'brandLabel' => Yii::$app->name,
-        'brandUrl' => Yii::$app->homeUrl,
-        'options' => [
-            'class' => 'navbar-inverse navbar-fixed-top',
-        ],
-    ]);
-    $menuItems = [
-        ['label' => 'Home', 'url' => ['/site/index']],
-    ];
-    if (Yii::$app->user->isGuest) {
-        $menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];
-    } else {
-        $menuItems[] = '<li>'
-            . Html::beginForm(['/site/logout'], 'post')
-            . Html::submitButton(
-                'Logout (' . Yii::$app->user->identity->username . ')',
-                ['class' => 'btn btn-link logout']
-            )
-            . Html::endForm()
-            . '</li>';
-    }
-    echo Nav::widget([
-        'options' => ['class' => 'navbar-nav navbar-right'],
-        'items' => $menuItems,
-    ]);
-    NavBar::end();
-    ?>
-
+    <nav class="light-blue lighten-1">
+        <div class="nav-wrapper">
+          <a  class="brand-logo right">Reservame</a>
+          <ul id="nav-mobile" class="left hide-on-med-and-down">
+            <li><a href="<?= Url::to(['licencias/index']) ?>">Licencias</a></li>
+            <li><a href="<?= Url::to(['tipo-negocio/index']) ?>">Tipo Negocios</a></li>
+            <li><a href="<?= Url::to(['negocio/index']) ?>">Negocios</a></li>
+            <li><a href="<?= Url::to(['pagos-negocio/index']) ?>">Pagos Negocios</a></li>
+            <li><a href="<?= Url::to(['responsables-negocio/index']) ?>">Responsables Negocios</a></li>
+          </ul>
+        </div>
+    </nav>
     <div class="container">
         <?= Breadcrumbs::widget([
             'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
@@ -78,3 +81,4 @@ AppAsset::register($this);
 </body>
 </html>
 <?php $this->endPage() ?>
+<?php } ?>
