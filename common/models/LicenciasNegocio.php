@@ -22,6 +22,10 @@ use Yii;
  */
 class LicenciasNegocio extends \yii\db\ActiveRecord
 {
+
+    const LICENCIA_ACTIVA = 0;
+    const LICENCIA_INACTIVA = 1;
+
     /**
      * {@inheritdoc}
      */

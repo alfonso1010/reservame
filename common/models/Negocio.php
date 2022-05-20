@@ -47,11 +47,12 @@ class Negocio extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
+            ['codigo_negocio', 'unique', 'targetClass' => '\common\models\Negocio', 'message' => 'Codigo Negocio ya existe.'],
             [['codigo_negocio', 'nombre', 'responsable', 'fecha_alta', 'fecha_actualizacion', 'id_tipo_negocio', 'telefono_celular'], 'required'],
             [['fecha_alta', 'fecha_actualizacion'], 'safe'],
             [['activo', 'id_tipo_negocio'], 'integer'],
             [['foto_fachada'], 'string'],
-            [['codigo_negocio', 'telefono_fijo', 'extencion', 'telefono_celular'], 'string', 'max' => 45],
+            [['telefono_fijo', 'extencion', 'telefono_celular'], 'string', 'max' => 45],
             [['nombre', 'responsable'], 'string', 'max' => 255],
             [['id_tipo_negocio'], 'exist', 'skipOnError' => true, 'targetClass' => TipoNegocio::className(), 'targetAttribute' => ['id_tipo_negocio' => 'id']],
         ];

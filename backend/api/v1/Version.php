@@ -36,6 +36,12 @@ class Version extends \tecnocen\roa\modules\ApiVersion {
 		'reservacion-cliente'   => [
 			'class'   => \backend\api\v1\resources\ReservacionClienteResource::class,
 		],
+		'codigos-promocionales'   => [
+			'class'   => \backend\api\v1\resources\CodigosPromocionalesResource::class,
+		],
+		'registro'   => [
+			'class'   => \backend\api\v1\resources\RegistroResource::class,
+		],
 	];
 
 	/**

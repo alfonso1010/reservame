@@ -53,6 +53,7 @@ if (Yii::$app->controller->action->id === 'login') {
           <a  class="brand-logo right">Reservame</a>
           <ul id="nav-mobile" class="left hide-on-med-and-down">
             <li><a href="<?= Url::to(['licencias/index']) ?>">Licencias</a></li>
+            <li><a href="<?= Url::to(['codigos-promocionales/index']) ?>">Codigos Promoción</a></li>
             <li><a href="<?= Url::to(['tipo-negocio/index']) ?>">Tipo Negocios</a></li>
             <li><a href="<?= Url::to(['negocio/index']) ?>">Negocios</a></li>
             <li><a href="<?= Url::to(['pagos-negocio/index']) ?>">Pagos Negocios</a></li>
