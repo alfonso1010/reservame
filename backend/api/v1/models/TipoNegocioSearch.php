@@ -6,9 +6,8 @@ use tecnocen\roa\ResourceSearch;
 use yii\data\ActiveDataProvider;
 use yii\helpers\ArrayHelper;
 use yii\helpers\VarDumper;
-use Yii;
 
-class ResponsablesNegocioSearch extends ResponsablesNegocio implements ResourceSearch
+class TipoNegocioSearch extends TipoNegocio implements ResourceSearch
 
 {
 	/**
@@ -24,13 +23,12 @@ class ResponsablesNegocioSearch extends ResponsablesNegocio implements ResourceS
      */
     public function search(array $params, $formName = '')
     {
-        $id_usuario = Yii::$app->user->identity->id;
         $this->load($params, $formName);
         if (!$this->validate()) {
             return null;
         }
 
-        $query = static::find()->where(['id_usuario' => $id_usuario]);
+        $query = static::find();
 
         return new ActiveDataProvider([
             'query' => $query,

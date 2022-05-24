@@ -42,6 +42,9 @@ class Version extends \tecnocen\roa\modules\ApiVersion {
 		'registro'   => [
 			'class'   => \backend\api\v1\resources\RegistroResource::class,
 		],
+		'tipo-negocio'   => [
+			'class'   => \backend\api\v1\resources\TipoNegocioResource::class,
+		],
 	];
 
 	/**

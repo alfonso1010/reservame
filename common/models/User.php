@@ -224,4 +224,23 @@ class User extends ActiveRecord implements IdentityInterface
     {
         $this->password_reset_token = null;
     }
+
+    /**
+     * Asigna el rol al usuario en cuestion
+     * @param integer $id_usuario
+     * @param string $rol nombre del rol
+     * @return
+     */
+    public static function asignaRol($id_usuario, $setrol = null) {
+        $auth = Yii::$app->authManager;
+        $auth->revokeAll($id_usuario);
+        if ($setrol !== null && !empty($setrol)) {
+            $rol = $auth->getRole($setrol);
+            if ($rol) {
+                $auth->assign($rol, $id_usuario);
+            } else {
+                throw new \yii\web\HttpException(404, 'El rol no existe.');
+            }
+        }
+    }
 }

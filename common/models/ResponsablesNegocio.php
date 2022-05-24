@@ -61,4 +61,15 @@ class ResponsablesNegocio extends \yii\db\ActiveRecord
     {
         return $this->hasOne(Negocio::className(), ['id' => 'id_negocio']);
     }
+
+     /**
+     * Gets query for [[DireccionNegocios]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getDireccionNegocio()
+    {
+        return $this->hasMany(DireccionNegocio::className(), ['id_negocio' => 'id_negocio']);
+    }
+
 }

@@ -6,7 +6,7 @@ use Yii;
 use yii\behaviors\TimestampBehavior;
 use yii\db\Expression;
 
-class ResponsablesNegocio extends \common\models\ResponsablesNegocio {
+class TipoNegocio extends \common\models\TipoNegocio {
 
 	/**
 	 * @inheritdoc
@@ -16,13 +16,7 @@ class ResponsablesNegocio extends \common\models\ResponsablesNegocio {
         return array_merge(parent::behaviors(), [
             'slug' => [
                 'class' => \tecnocen\roa\behaviors\Slug::class,
-                'resourceName' => 'responsables-negocio',
-            ],
-            'timestamp' => [
-                'class' => TimestampBehavior::className(),
-                'value' => new Expression('now()'),
-                'createdAtAttribute' => 'fecha_alta',
-                'updatedAtAttribute' => 'fecha_alta',
+                'resourceName' => 'horario-negocio',
             ],
 			'softDeleteBehavior' => [
                 'class' => \yii2tech\ar\softdelete\SoftDeleteBehavior::className(),
@@ -46,19 +40,5 @@ class ResponsablesNegocio extends \common\models\ResponsablesNegocio {
 					])
 			]);
 	}
-
-    /**
-     * @inheritdoc
-     */
-    public function extraFields()
-    {
-        return [
-            'negocio',
-            'direccionNegocio',
-            'tipoNegocio' => function ($model){
-                return $model->negocio->tipoNegocio;
-            }
-        ];
-    }
 
 }

@@ -81,6 +81,8 @@ class RegistroResource extends Resource
 	        $user->generateAuthKey();
 	        $user->generateEmailVerificationToken();
 	        if($user->save()){
+	        	//asigna rol
+	        	User::asignaRol($user->id,"responsable");
 	        	//crea el negocio
 	        	$codigo_negocio = rand(100000,999999);
 	        	$existe_negocio = true;

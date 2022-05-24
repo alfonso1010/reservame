@@ -39,6 +39,7 @@ class VersionContainer extends \tecnocen\roa\modules\ApiContainer
                 'except' => [
                     'v1/codigos-promocionales/index',
                     'v1/registro/create',
+                    'v1/tipo-negocio/index',
                     'oauth2/*', // the oauth2 module
                     'index/*', // controller that return this module info
                     '*/options', // all OPTIONS actions for CORS preflight
