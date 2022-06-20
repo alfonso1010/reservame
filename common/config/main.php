@@ -19,4 +19,5 @@ return [
             'enablePrettyUrl' => true
         ],
     ],
+    'language' => 'es-MX'
 ];

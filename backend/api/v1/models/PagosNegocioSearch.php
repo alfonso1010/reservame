@@ -15,7 +15,7 @@ class PagosNegocioSearch extends PagosNegocio implements ResourceSearch
      */
     public function rules()
     {
-        return [];
+        return [[['fecha_pago', 'fecha_alta','id_negocio','fecha_pago','monto_pago','estatus','id_licencia'], 'safe']];
     }
 
     /**
@@ -29,6 +29,18 @@ class PagosNegocioSearch extends PagosNegocio implements ResourceSearch
         }
 
         $query = static::find();
+
+        // grid filtering conditions
+        $query->andFilterWhere([
+            'id_pagos_negocio' => $this->id_pagos_negocio,
+            'fecha_pago' => $this->fecha_pago,
+            'monto_pago' => $this->monto_pago,
+            'estatus' => $this->estatus,
+            'fecha_alta' => $this->fecha_alta,
+            'id_negocio' => $this->id_negocio,
+        ]);
+       
+        $query->andFilterWhere(['like', 'comprobante_pago', $this->comprobante_pago]);
 
         return new ActiveDataProvider([
             'query' => $query,

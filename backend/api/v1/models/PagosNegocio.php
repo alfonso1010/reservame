@@ -17,13 +17,8 @@ class PagosNegocio extends \common\models\PagosNegocio {
             'slug' => [
                 'class' => \tecnocen\roa\behaviors\Slug::class,
                 'resourceName' => 'pagos-negocio',
+                'idAttribute' => 'id_pagos_negocio',
             ],
-			'softDeleteBehavior' => [
-                'class' => \yii2tech\ar\softdelete\SoftDeleteBehavior::className(),
-                'softDeleteAttributeValues' => [
-                    'activo' => true
-                ]
-            ]
         ]);
     }	
 

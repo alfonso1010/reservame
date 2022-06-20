@@ -66,7 +66,7 @@ class PagosNegocioSearch extends PagosNegocio
             'fecha_alta' => $this->fecha_alta,
             'id_negocio' => $this->id_negocio,
         ]);
-
+       
         $query->andFilterWhere(['like', 'comprobante_pago', $this->comprobante_pago]);
 
         return $dataProvider;

@@ -33,8 +33,8 @@ class PagosNegocio extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['fecha_pago', 'monto_pago', 'comprobante_pago', 'estatus', 'fecha_alta', 'id_negocio'], 'required'],
-            [['fecha_pago', 'fecha_alta'], 'safe'],
+            [['fecha_pago', 'monto_pago', 'comprobante_pago', 'estatus', 'fecha_alta', 'id_negocio','id_licencia'], 'required'],
+            [['fecha_pago', 'fecha_alta','descripcion'], 'safe'],
             [['monto_pago'], 'number'],
             [['comprobante_pago'], 'string'],
             [['estatus', 'id_negocio'], 'integer'],
@@ -55,6 +55,27 @@ class PagosNegocio extends \yii\db\ActiveRecord
             'estatus' => 'Estatus',
             'fecha_alta' => 'Fecha Alta',
             'id_negocio' => 'Id Negocio',
+            'id_licencia' => 'Id licencia',
+            'descripcion' => 'Descripcion',
+        ];
+    }
+
+
+    public function fields()
+    {
+        return [
+            "id_pagos_negocio",
+            "fecha_pago",
+            "comprobante_pago",
+            "estatus",
+            "fecha_alta",
+            "id_negocio",
+            "id_licencia",
+            "descripcion",
+            "monto_pago" => function($model){
+                return \Yii::$app->formatter->asCurrency($model->monto_pago);
+            },
+           
         ];
     }
 

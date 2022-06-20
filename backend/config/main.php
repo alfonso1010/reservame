@@ -8,7 +8,7 @@ $params = array_merge(
 
 return [
     'id' => 'app-backend',
-    'language' => 'es',
+    'language' => 'es-MX',
     'basePath' => dirname(__DIR__),
     'controllerNamespace' => 'backend\controllers',
     'bootstrap' => ['log','api'],
@@ -50,6 +50,12 @@ return [
                 '<controller:\w+>/<action:\w+>/<id:\d+>' => '<controller>/<action>',
                 '<controller:\w+>/<action:\w+>'          => '<controller>/<action>',
             ],
+        ],
+        'formatter' =>
+        [
+            'dateFormat' => 'medium',
+            'defaultTimeZone' => 'America/Mexico_City',
+            'currencyCode' => 'MXN',
         ],
     ],
     'params' => $params,

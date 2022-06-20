@@ -57,6 +57,28 @@ class ResponsablesNegocio extends \common\models\ResponsablesNegocio {
             'direccionNegocio',
             'tipoNegocio' => function ($model){
                 return $model->negocio->tipoNegocio;
+            },
+            'licencia' => function ($model){
+                $licencias = $model->negocio->licenciasNegocios;
+                $todas = [];
+                foreach ($licencias as $key => $licencia) {
+                    $todas[] = [
+                        'fecha_compra' => $licencia->fecha_compra,
+                        'fecha_vencimiento' => $licencia->fecha_vencimiento,
+                        'fecha_renovacion' => $licencia->fecha_renovacion,
+                        'estatus_texto' => $licencia->estatus_texto ,
+                        'estatus  ' => $licencia->estatus ,
+                        'fecha_proximo_pago' => ($licencia->licencia->tipo_licencia == 2)?"NA":$licencia->fecha_proximo_pago ,
+                        'nombre' => $licencia->licencia->nombre,
+                        'duracion_dias' => $licencia->licencia->duracion_dias,
+                        'precio' => \Yii::$app->formatter->asCurrency($licencia->licencia->precio),
+                    ];
+                }
+                return $todas;
+            },
+            'pagos' => function ($model){
+                $pagos_model = $model->negocio->pagosNegocios;
+                return $pagos_model;
             }
         ];
     }
